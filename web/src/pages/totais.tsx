@@ -131,7 +131,7 @@ export default function Totais() {
                         <div className="card-texto">
                             <span>Receitas</span>
                             <strong>
-                                R${totais.totalReceitas}
+                                {totais.totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </strong>
                         </div>
                         <div className="card-icone">
@@ -145,7 +145,7 @@ export default function Totais() {
                         <div className="card-texto">
                             <span>Despesas</span>
                             <strong>
-                                R${totais.totalDespesas}
+                                {totais.totalDespesas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </strong>
                         </div>
                         <div className="card-icone">
@@ -159,7 +159,7 @@ export default function Totais() {
                         <div className="card-texto">
                             <span>Saldo líquido</span>
                             <strong>
-                                R${totais.saldoLiquido}
+                                {totais.saldoLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </strong>
                         </div>
                         <div className="card-icone">
