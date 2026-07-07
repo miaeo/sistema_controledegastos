@@ -1,0 +1,22 @@
+# Backend (.NET)
+bin/
+obj/
+
+.vs/
+*.user
+*.suo
+.vscode/
+.idea/
+
+# Frontend (React/Vite)
+node_modules/
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
