@@ -414,8 +414,15 @@ tbody tr:hover {
 }
 
 .card-texto strong{
-    font-size:28px;
+    font-size:26px;
     font-weight:700;
+}
+
+.card-texto strong small {
+    font-size: 0.55em;
+    font-weight: 500;
+    margin-right: 3px;
+    vertical-align: top;
 }
 
 .card-icone{
