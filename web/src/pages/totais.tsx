@@ -47,6 +47,24 @@ export default function Totais() {
     }
 
     /*
+    * formata os valores monetarios
+    * e grandes valores sao abreviados 
+    * pra nao ultrapassar o limite visual */
+    function formatarValor(valor: number) {
+        const abs = Math.abs(valor);
+        if (abs >= 1_000_000) {
+            return `${(valor / 1_000_000).toFixed(1)} mi`;
+        }
+        if (abs >= 1_000) {
+            return `${(valor / 1_000).toFixed(1)} mil`;
+        }
+        return valor.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    /*
     * carrega os dados ao abrir a tela */
     useEffect(() => {
         carregarTotais();
@@ -130,8 +148,9 @@ export default function Totais() {
                     <div className="card-conteudo">
                         <div className="card-texto">
                             <span>Receitas</span>
-                            <strong>
-                                {totais.totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            <strong title={totais.totalReceitas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}>
+                                <small>R$</small>
+                                {formatarValor(totais.totalReceitas)}
                             </strong>
                         </div>
                         <div className="card-icone">
@@ -144,8 +163,9 @@ export default function Totais() {
                     <div className="card-conteudo">
                         <div className="card-texto">
                             <span>Despesas</span>
-                            <strong>
-                                {totais.totalDespesas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            <strong title={totais.totalDespesas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}>
+                                <small>R$</small>
+                                {formatarValor(totais.totalDespesas)}
                             </strong>
                         </div>
                         <div className="card-icone">
@@ -158,8 +178,9 @@ export default function Totais() {
                     <div className="card-conteudo">
                         <div className="card-texto">
                             <span>Saldo líquido</span>
-                            <strong>
-                                {totais.saldoLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            <strong title={totais.saldoLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}>
+                                <small>R$</small>
+                                {formatarValor(totais.saldoLiquido)}
                             </strong>
                         </div>
                         <div className="card-icone">
