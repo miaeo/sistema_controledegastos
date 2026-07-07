@@ -44,6 +44,12 @@ export default function Pessoas() {
     /*
     * envia uma nova pessoa para a API */
     async function criarPessoa() {
+        /*
+        * VERIFICAÇÃO: idade deve ser informada */
+        if (idade === "") {
+            alert("A idade é obrigatória.");
+            return;
+        }
         const resposta = await fetch(
             `${API_URL}/Pessoas`,
             {
@@ -58,13 +64,6 @@ export default function Pessoas() {
         if (!resposta.ok) {
             const erro = await resposta.text();
             alert(erro);
-            return;
-        }
-
-        /* VERIFICAÇÃO: idade deve ser informada
-        */
-        if (idade === "") {
-            alert("A idade é obrigatória.");
             return;
         }
         setNome("");
